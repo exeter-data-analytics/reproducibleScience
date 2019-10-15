@@ -1,0 +1,8 @@
+# ignore backup files
+*~
+.Rhistory
+.Rproj.user
+
+# ignore compiled files
+docs/
+_bookdown*
