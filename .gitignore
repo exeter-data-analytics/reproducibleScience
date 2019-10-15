@@ -6,3 +6,5 @@
 # ignore compiled files
 docs/
 _bookdown*
+
+upload.sh
