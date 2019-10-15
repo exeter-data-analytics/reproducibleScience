@@ -1054,6 +1054,6 @@ of lessons.
 
 # Acknowledgements
 
-This bookdown material is not in anyway original; it was heavily based on the [nice R code blog](http://nicercode.github.io/blog/2013-04-05-projects/) and [The Carpentries free material](http://swcarpentry.github.io/git-novice/02-setup/index.html), posteriorly adapted by Diego Barneche.
+This bookdown material is not in anyway original; it was heavily based on the [nice R code blog](http://nicercode.github.io/blog/2013-04-05-projects/) and [The Carpentries free material](http://swcarpentry.github.io/git-novice/02-setup/index.html), posteriorly adapted by [Diego Barneche](https://github.com/dbarneche).
 
 I'd like to thank [Daniel Falster](https://github.com/dfalster) and [Rich FitzJohn](https://github.com/richfitz) for creating the nice R code blog, and [JJ Valletta](https://github.com/jjvalletta) and [TJ McKinley](https://github.com/tjmckinley) for helping me set this bookdown.
