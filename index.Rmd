@@ -1,5 +1,5 @@
 --- 
-title: "Organised, transparent and reproducible science using R, git, and remake"
+title: "Organised, transparent and reproducible science using R, git, and drake"
 author: "D Barneche"
 site: bookdown::bookdown_site
 output:
@@ -16,7 +16,7 @@ output:
 linkcolor: blue
 documentclass: book
 link-citations: yes
-description: "Organised, transparent and reproducible science using R, git, and remake"
+description: "Organised, transparent and reproducible science using R, git, and drake"
 ---
 
 # How to organise your project directories
@@ -1051,6 +1051,30 @@ There is an incredible
 that is useful to work through learning about git branches.  It also has a
 [tutorial mode](http://pcottle.github.io/learnGitBranching/) with lots
 of lessons.
+
+## Further reading material
+
+There is no way that we can cover everything that you need to get started with git.  I recommend that you work through the first two chapters of the [git book](http://git-scm.org/book) (free and online!).  It won't take long and you can skim through sections.  This is 95% of what you need to know to use git by yourself.  If you read the third chapter you know 99% of what you need to use git in a collaborative team.
+
+There are some good online tutorials online; these two might be of particular interest [this one](http://kbroman.github.io/github_tutorial/) focusses on using git with github and [this one](http://karthik.github.io/git_intro/) gives a nice bit of extra motivation.
+
+[Here](http://nicercode.github.io/git/) is a beginner-focussed tutorial we use in another course that focusses on using git from within R.
+
+[GitHub](http://github.com/) is amazing and makes it easy to do a lot with git. In particular [it makes it easy to](https://help.github.com/en/articles/comparing-commits-across-time)
+
+* see **diffs**, comparing different versions of your project easily, and without having to remember the command syntax.
+
+* examine **logs** so you can see what happened by file, or over the whole project.
+
+* use **blame** to see who changed what line in a file and when.
+
+* to help collaborate with other people on code.
+
+* use **pull requests**, which mean you can easily contribute to other people's projects and they can easily control what is added to their project.
+
+* set up [continuous integration](https://travis-ci.org/), so that you know as soon as something goes wrong.
+
+If you don't like git, you might like [Mercurial](mercurial.selenic.com).  If that doesn't do it for you, there are [many, many others](http://en.wikipedia.org/wiki/List_of_revision_control_software) but bear in mind that it's important to use similar systems to people you might work with.
 
 # Acknowledgements
 

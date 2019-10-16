@@ -1,4 +1,4 @@
-# Organised, transparent and reproducible science using R, git, and remake
+# Organised, transparent and reproducible science using R, git, and drake
 
 This repository contains data and code needed to reproduce the content for the Day 2 Exeter data analytics workshop run by Drs Charlotte Brand and Diego Barneche.
 
