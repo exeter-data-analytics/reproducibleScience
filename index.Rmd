@@ -1052,7 +1052,7 @@ that is useful to work through learning about git branches.  It also has a
 [tutorial mode](http://pcottle.github.io/learnGitBranching/) with lots
 of lessons.
 
-## Further reading material
+### Further reading material
 
 There is no way that we can cover everything that you need to get started with git.  I recommend that you work through the first two chapters of the [git book](http://git-scm.org/book) (free and online!).  It won't take long and you can skim through sections.  This is 95% of what you need to know to use git by yourself.  If you read the third chapter you know 99% of what you need to use git in a collaborative team.
 
@@ -1075,6 +1075,14 @@ There are some good online tutorials online; these two might be of particular in
 * set up [continuous integration](https://travis-ci.org/), so that you know as soon as something goes wrong.
 
 If you don't like git, you might like [Mercurial](mercurial.selenic.com).  If that doesn't do it for you, there are [many, many others](http://en.wikipedia.org/wiki/List_of_revision_control_software) but bear in mind that it's important to use similar systems to people you might work with.
+
+# Resources for pracs
+
+* [GitHub for beginners](https://guides.github.com/activities/hello-world/).
+
+* Rmarkdown with [Knitr](https://yihui.name/knitr/), including [options](https://yihui.name/knitr/options/).
+
+* Reproducible code with [drake](https://ropenscilabs.github.io/drake-manual/).
 
 # Acknowledgements
 
