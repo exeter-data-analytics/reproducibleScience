@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Lecture slides | Organised, transparent and reproducible science using R, git, and drake</title>
+  <meta name="description" content="3 Lecture slides | Organised, transparent and reproducible science using R, git, and drake" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Lecture slides | Organised, transparent and reproducible science using R, git, and drake" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="3 Lecture slides | Organised, transparent and reproducible science using R, git, and drake" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Lecture slides | Organised, transparent and reproducible science using R, git, and drake" />
+  
+  <meta name="twitter:description" content="3 Lecture slides | Organised, transparent and reproducible science using R, git, and drake" />
+  
+
+<meta name="author" content="D Barneche" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="version-control.html"/>
+<link rel="next" href="resources-for-pracs.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script language="javascript"> 
+    function toggle(id) {
+        var ele = document.getElementById("toggleText" + id);
+        var text = document.getElementById("displayText" + id);
+        var buttonText = text.innerHTML.replace("Show ", "");
+        buttonText = buttonText.replace("Hide ", "");
+        if(ele.style.display == "block") {
+            ele.style.display = "none";
+            text.innerHTML = "Show " + buttonText;
+        } else {
+            ele.style.display = "block";
+            text.innerHTML = "Hide " + buttonText;
+        }
+    } 
+</script>
+
+<script language="javascript">
+    function openCode(evt, codeName, id) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent" + id);
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks" + id);
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(codeName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<script language="javascript">
+    function hide(id){
+        document.getElementById(id).style.display = "none";
+    }
+</script>
+</script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> How to organise your project directories</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#directory-layout"><i class="fa fa-check"></i><b>1.1</b> Directory layout</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#the-general-disaster"><i class="fa fa-check"></i><b>1.1.1</b> The general disaster</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#a-nicer-solution"><i class="fa fa-check"></i><b>1.1.2</b> A niceR solution</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#treat-data-as-read-only"><i class="fa fa-check"></i><b>1.1.3</b> Treat data as read only</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#treat-generated-output-as-disposable"><i class="fa fa-check"></i><b>1.1.4</b> Treat generated output as disposable</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#separate-function-definition-and-application"><i class="fa fa-check"></i><b>1.1.5</b> Separate function definition and application</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#setting-up-a-project-in-rstudio"><i class="fa fa-check"></i><b>1.2</b> Setting up a project in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version control</a><ul>
+<li class="chapter" data-level="2.1" data-path="version-control.html"><a href="version-control.html#why-use-version-control"><i class="fa fa-check"></i><b>2.1</b> Why use version control?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="version-control.html"><a href="version-control.html#you-are-already-using-version-control"><i class="fa fa-check"></i><b>2.1.1</b> You are already using version control</a></li>
+<li class="chapter" data-level="2.1.2" data-path="version-control.html"><a href="version-control.html#version-control-is-not-a-back-up"><i class="fa fa-check"></i><b>2.1.2</b> Version control is not a back up</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="version-control.html"><a href="version-control.html#basic-git-configuration"><i class="fa fa-check"></i><b>2.2</b> Basic git configuration</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="version-control.html"><a href="version-control.html#keeping-your-email-private"><i class="fa fa-check"></i><b>2.2.1</b> Keeping your email private</a></li>
+<li class="chapter" data-level="2.2.2" data-path="version-control.html"><a href="version-control.html#line-endings"><i class="fa fa-check"></i><b>2.2.2</b> Line Endings</a></li>
+<li class="chapter" data-level="2.2.3" data-path="version-control.html"><a href="version-control.html#configure-your-text-editor"><i class="fa fa-check"></i><b>2.2.3</b> Configure your text editor</a></li>
+<li class="chapter" data-level="2.2.4" data-path="version-control.html"><a href="version-control.html#other-editors"><i class="fa fa-check"></i><b>2.2.4</b> Other editors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="version-control.html"><a href="version-control.html#git-basics"><i class="fa fa-check"></i><b>2.3</b> Git basics</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="version-control.html"><a href="version-control.html#what-goes-in-my-repository"><i class="fa fa-check"></i><b>2.3.1</b> What goes in my repository?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="version-control.html"><a href="version-control.html#the-commit-cycle"><i class="fa fa-check"></i><b>2.3.2</b> The commit cycle</a></li>
+<li class="chapter" data-level="2.3.3" data-path="version-control.html"><a href="version-control.html#creating-a-repository"><i class="fa fa-check"></i><b>2.3.3</b> Creating a repository</a></li>
+<li class="chapter" data-level="2.3.4" data-path="version-control.html"><a href="version-control.html#the-add-commit-cycle"><i class="fa fa-check"></i><b>2.3.4</b> The add-commit cycle</a></li>
+<li class="chapter" data-level="2.3.5" data-path="version-control.html"><a href="version-control.html#history"><i class="fa fa-check"></i><b>2.3.5</b> History</a></li>
+<li class="chapter" data-level="2.3.6" data-path="version-control.html"><a href="version-control.html#looking-at-the-history"><i class="fa fa-check"></i><b>2.3.6</b> Looking at the history</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#branching"><i class="fa fa-check"></i><b>2.4</b> Branching</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="version-control.html"><a href="version-control.html#what-do-branches-look-like"><i class="fa fa-check"></i><b>2.4.1</b> What do branches look like?</a></li>
+<li class="chapter" data-level="2.4.2" data-path="version-control.html"><a href="version-control.html#workflows-that-use-branches"><i class="fa fa-check"></i><b>2.4.2</b> Workflows that use branches</a></li>
+<li class="chapter" data-level="2.4.3" data-path="version-control.html"><a href="version-control.html#listing-branches"><i class="fa fa-check"></i><b>2.4.3</b> Listing branches</a></li>
+<li class="chapter" data-level="2.4.4" data-path="version-control.html"><a href="version-control.html#creating-branches"><i class="fa fa-check"></i><b>2.4.4</b> Creating branches</a></li>
+<li class="chapter" data-level="2.4.5" data-path="version-control.html"><a href="version-control.html#how-branches-grow"><i class="fa fa-check"></i><b>2.4.5</b> How branches grow</a></li>
+<li class="chapter" data-level="2.4.6" data-path="version-control.html"><a href="version-control.html#merging-branches-back-together"><i class="fa fa-check"></i><b>2.4.6</b> Merging branches back together</a></li>
+<li class="chapter" data-level="2.4.7" data-path="version-control.html"><a href="version-control.html#merging-when-branches-have-diverged"><i class="fa fa-check"></i><b>2.4.7</b> Merging when branches have diverged</a></li>
+<li class="chapter" data-level="2.4.8" data-path="version-control.html"><a href="version-control.html#branches-and-old-versions"><i class="fa fa-check"></i><b>2.4.8</b> Branches and old versions</a></li>
+<li class="chapter" data-level="2.4.9" data-path="version-control.html"><a href="version-control.html#concluding-remarks"><i class="fa fa-check"></i><b>2.4.9</b> Concluding remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#further-reading-material"><i class="fa fa-check"></i><b>2.5</b> Further reading material</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lecture-slides.html"><a href="lecture-slides.html"><i class="fa fa-check"></i><b>3</b> Lecture slides</a></li>
+<li class="chapter" data-level="4" data-path="resources-for-pracs.html"><a href="resources-for-pracs.html"><i class="fa fa-check"></i><b>4</b> Resources for pracs</a></li>
+<li class="chapter" data-level="5" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>5</b> Acknowledgements</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Organised, transparent and reproducible science using R, git, and drake</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lecture-slides" class="section level1">
+<h1><span class="header-section-number">3</span> Lecture slides</h1>
+<ul>
+<li><p><a href="slides/OpenSciSlides_091019.pdf">Day 1: Open Science</a></p></li>
+<li><p><a href="slides/OpenSciSlides_161019.pdf">Day 2: Reproducibility</a></p></li>
+</ul>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="version-control.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="resources-for-pracs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Version control | Organised, transparent and reproducible science using R, git, and drake</title>
+  <meta name="description" content="2 Version control | Organised, transparent and reproducible science using R, git, and drake" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Version control | Organised, transparent and reproducible science using R, git, and drake" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="2 Version control | Organised, transparent and reproducible science using R, git, and drake" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Version control | Organised, transparent and reproducible science using R, git, and drake" />
+  
+  <meta name="twitter:description" content="2 Version control | Organised, transparent and reproducible science using R, git, and drake" />
+  
+
+<meta name="author" content="D Barneche" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="lecture-slides.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script language="javascript"> 
+    function toggle(id) {
+        var ele = document.getElementById("toggleText" + id);
+        var text = document.getElementById("displayText" + id);
+        var buttonText = text.innerHTML.replace("Show ", "");
+        buttonText = buttonText.replace("Hide ", "");
+        if(ele.style.display == "block") {
+            ele.style.display = "none";
+            text.innerHTML = "Show " + buttonText;
+        } else {
+            ele.style.display = "block";
+            text.innerHTML = "Hide " + buttonText;
+        }
+    } 
+</script>
+
+<script language="javascript">
+    function openCode(evt, codeName, id) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent" + id);
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks" + id);
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(codeName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<script language="javascript">
+    function hide(id){
+        document.getElementById(id).style.display = "none";
+    }
+</script>
+</script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> How to organise your project directories</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#directory-layout"><i class="fa fa-check"></i><b>1.1</b> Directory layout</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#the-general-disaster"><i class="fa fa-check"></i><b>1.1.1</b> The general disaster</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#a-nicer-solution"><i class="fa fa-check"></i><b>1.1.2</b> A niceR solution</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#treat-data-as-read-only"><i class="fa fa-check"></i><b>1.1.3</b> Treat data as read only</a></li>
+<li class="chapter" data-level="1.1.4" data-path="index.html"><a href="index.html#treat-generated-output-as-disposable"><i class="fa fa-check"></i><b>1.1.4</b> Treat generated output as disposable</a></li>
+<li class="chapter" data-level="1.1.5" data-path="index.html"><a href="index.html#separate-function-definition-and-application"><i class="fa fa-check"></i><b>1.1.5</b> Separate function definition and application</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#setting-up-a-project-in-rstudio"><i class="fa fa-check"></i><b>1.2</b> Setting up a project in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="version-control.html"><a href="version-control.html"><i class="fa fa-check"></i><b>2</b> Version control</a><ul>
+<li class="chapter" data-level="2.1" data-path="version-control.html"><a href="version-control.html#why-use-version-control"><i class="fa fa-check"></i><b>2.1</b> Why use version control?</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="version-control.html"><a href="version-control.html#you-are-already-using-version-control"><i class="fa fa-check"></i><b>2.1.1</b> You are already using version control</a></li>
+<li class="chapter" data-level="2.1.2" data-path="version-control.html"><a href="version-control.html#version-control-is-not-a-back-up"><i class="fa fa-check"></i><b>2.1.2</b> Version control is not a back up</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="version-control.html"><a href="version-control.html#basic-git-configuration"><i class="fa fa-check"></i><b>2.2</b> Basic git configuration</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="version-control.html"><a href="version-control.html#keeping-your-email-private"><i class="fa fa-check"></i><b>2.2.1</b> Keeping your email private</a></li>
+<li class="chapter" data-level="2.2.2" data-path="version-control.html"><a href="version-control.html#line-endings"><i class="fa fa-check"></i><b>2.2.2</b> Line Endings</a></li>
+<li class="chapter" data-level="2.2.3" data-path="version-control.html"><a href="version-control.html#configure-your-text-editor"><i class="fa fa-check"></i><b>2.2.3</b> Configure your text editor</a></li>
+<li class="chapter" data-level="2.2.4" data-path="version-control.html"><a href="version-control.html#other-editors"><i class="fa fa-check"></i><b>2.2.4</b> Other editors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="version-control.html"><a href="version-control.html#git-basics"><i class="fa fa-check"></i><b>2.3</b> Git basics</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="version-control.html"><a href="version-control.html#what-goes-in-my-repository"><i class="fa fa-check"></i><b>2.3.1</b> What goes in my repository?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="version-control.html"><a href="version-control.html#the-commit-cycle"><i class="fa fa-check"></i><b>2.3.2</b> The commit cycle</a></li>
+<li class="chapter" data-level="2.3.3" data-path="version-control.html"><a href="version-control.html#creating-a-repository"><i class="fa fa-check"></i><b>2.3.3</b> Creating a repository</a></li>
+<li class="chapter" data-level="2.3.4" data-path="version-control.html"><a href="version-control.html#the-add-commit-cycle"><i class="fa fa-check"></i><b>2.3.4</b> The add-commit cycle</a></li>
+<li class="chapter" data-level="2.3.5" data-path="version-control.html"><a href="version-control.html#history"><i class="fa fa-check"></i><b>2.3.5</b> History</a></li>
+<li class="chapter" data-level="2.3.6" data-path="version-control.html"><a href="version-control.html#looking-at-the-history"><i class="fa fa-check"></i><b>2.3.6</b> Looking at the history</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="version-control.html"><a href="version-control.html#branching"><i class="fa fa-check"></i><b>2.4</b> Branching</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="version-control.html"><a href="version-control.html#what-do-branches-look-like"><i class="fa fa-check"></i><b>2.4.1</b> What do branches look like?</a></li>
+<li class="chapter" data-level="2.4.2" data-path="version-control.html"><a href="version-control.html#workflows-that-use-branches"><i class="fa fa-check"></i><b>2.4.2</b> Workflows that use branches</a></li>
+<li class="chapter" data-level="2.4.3" data-path="version-control.html"><a href="version-control.html#listing-branches"><i class="fa fa-check"></i><b>2.4.3</b> Listing branches</a></li>
+<li class="chapter" data-level="2.4.4" data-path="version-control.html"><a href="version-control.html#creating-branches"><i class="fa fa-check"></i><b>2.4.4</b> Creating branches</a></li>
+<li class="chapter" data-level="2.4.5" data-path="version-control.html"><a href="version-control.html#how-branches-grow"><i class="fa fa-check"></i><b>2.4.5</b> How branches grow</a></li>
+<li class="chapter" data-level="2.4.6" data-path="version-control.html"><a href="version-control.html#merging-branches-back-together"><i class="fa fa-check"></i><b>2.4.6</b> Merging branches back together</a></li>
+<li class="chapter" data-level="2.4.7" data-path="version-control.html"><a href="version-control.html#merging-when-branches-have-diverged"><i class="fa fa-check"></i><b>2.4.7</b> Merging when branches have diverged</a></li>
+<li class="chapter" data-level="2.4.8" data-path="version-control.html"><a href="version-control.html#branches-and-old-versions"><i class="fa fa-check"></i><b>2.4.8</b> Branches and old versions</a></li>
+<li class="chapter" data-level="2.4.9" data-path="version-control.html"><a href="version-control.html#concluding-remarks"><i class="fa fa-check"></i><b>2.4.9</b> Concluding remarks</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="version-control.html"><a href="version-control.html#further-reading-material"><i class="fa fa-check"></i><b>2.5</b> Further reading material</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lecture-slides.html"><a href="lecture-slides.html"><i class="fa fa-check"></i><b>3</b> Lecture slides</a></li>
+<li class="chapter" data-level="4" data-path="resources-for-pracs.html"><a href="resources-for-pracs.html"><i class="fa fa-check"></i><b>4</b> Resources for pracs</a></li>
+<li class="chapter" data-level="5" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>5</b> Acknowledgements</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Organised, transparent and reproducible science using R, git, and drake</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="version-control" class="section level1">
+<h1><span class="header-section-number">2</span> Version control</h1>
+<div id="why-use-version-control" class="section level2">
+<h2><span class="header-section-number">2.1</span> Why use version control?</h2>
+<p>There are many reasons to use version control, and some of these may only become apparent after you have incorporated it into your workflow (it’s a bit like “why use R” or “why document your code”). However, we can immediately identify a set of advantages that are very common.</p>
+<p>Most of these come from having <strong>a fossil record that captures the evolution of your project</strong> (including code, data, documentation, analyses, figures, talks, etc).</p>
+<p>This fossil record, or project history, is a series of revisions that connect to each other between the present and the start of the project. At any time you can go back to previous versions, see what you did, and run the code as though you have stepped back in time.</p>
+<p>Having a good fossil history has numerous possible uses :</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>You noticed that your code is doing odd things now and didn’t used to.</strong> Look at and run a version from the last known good code and try to work out what changed (after this, you should write a unit test!).</p></li>
+<li><p><strong>You deleted some code and want to get it back.</strong> This has a less obvious, but much more common (and perhaps more important) advantage; you will be more likely to delete old code rather than commenting it out, leaving you with shorter, more readable scripts.</p></li>
+<li><p><strong>You want to show your supervisor what you did last week.</strong></p></li>
+<li><p>Inversely, on a collaborative project, <strong>see what your collaborators wrote last week.</strong></p></li>
+<li><p>You reformatted everything from numbered citation styles to author-year after being rejected from journal A and sending your paper to journal B. Journal B didn’t want the paper anyway, so you can <strong>get the previous version back.</strong></p></li>
+<li><p><strong>You want to experiment</strong> and try something that might break huge pieces of your project, and know that you can back out if things go awry.</p></li>
+<li><p>Similarly, <strong>you want to try a couple of different strategies for solving a problem</strong> and review which one you like best (or show them to someone else).</p></li>
+<li><p>Gives you <strong>an audit-able project history</strong>; you know when you did what you did.</p></li>
+</ol>
+<p>The other great reason for using version control is that it allows for effective and transparent collaboration among small or large groups of scientists.</p>
+<div id="you-are-already-using-version-control" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> You are already using version control</h3>
+<p>Whether you recognise it or not, you are most likely already using some form of version control to achieve some of the advantages outlined above. This might include</p>
+<ul>
+<li>Commented out bits of code / text</li>
+<li>Files with numbers afterwards (<code>thesis_v1.doc</code>, <code>thesis_v2.doc</code>, <code>thesis_final.doc</code>, <code>thesis_final2.doc</code>, etc) (like in this <a href="http://www.phdcomics.com/comics/archive.php?comicid=1531">Phd Comic</a>)</li>
+<li>Every so often you zip up the whole project directory and save it with the date appended to the filename.</li>
+</ul>
+<p>Most ecologists we know have adopted at least one of these techniques for doing version control.</p>
+<p>In addition, you’ll often see people suggesting putting headers like this in your code file:</p>
+<pre><code>  ## My file (c) John Snow
+  ## Created: 2018/10/04
+  ## Modified: 2019/04/04</code></pre>
+<p>Sometimes you’ll even see change logs embedded in these.</p>
+<p>The problem with this is that it’s repetitive and boring, it’s difficult to extract the information easily (e.g., get me all the files <strong>I</strong> modified in the last month), there is no checking on the contents of the fields (dates in the future, forgetting to update dates, inconsistent names, email addresses). The <em>point</em> of these headers is nice — keep track of who did what and when, but this is far easier to achieve under a good version control system.</p>
+<p>Another thing you’ll find in many people’s code is large chunks of old code, commented-out because you think you might need it it again one day.</p>
+</div>
+<div id="version-control-is-not-a-back-up" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Version control is not a back up</h3>
+<p>It appears that this is like a brilliant backup system, but you need a backup too. Backing up is a complementary set of functions that overlap only in that there is usually some history going back.</p>
+<ul>
+<li><p>Back up but not git: corruption of repository, generated files that are not part of a repository but time consuming, installed software and other system issues. It is possible (but often hard) to break your git repository; you might reclone from somewhere or you might grab the last copy of a backup. Backup systems usually have larger capacity than online version control systems.</p></li>
+<li><p>Git but not backup: semantics around files, parallel branched versions of files, check out by either checkpoint or time (not just last time, etc).</p></li>
+</ul>
+<p>A good version control system does not substitute for a good backup system. <em>Backing up</em> offers a complementary set of functions that only partially overlap with those offered by version control. In general, you need both.</p>
+<p>I have all my projects under version control, and my whole documents directory under backup. If my computer fails, I immediately copy my documents directory from the backup to a new computer. I only need to get the last version though. On the other hand, at any time I can easily look back through the history of any project and see the work. For some projects, the last modification was months ago, while most backup system will be seriously thinning by this point (moving to monthly snapshots at best, and you probably have to pay for that).</p>
+<p>Other systems, like Dropbox, are more like backups, as they do not store your project history.</p>
+</div>
+</div>
+<div id="basic-git-configuration" class="section level2">
+<h2><span class="header-section-number">2.2</span> Basic git configuration</h2>
+<p>Please make sure you <a href="https://git-scm.com/downloads">download and install git</a> first. When we use git on a new computer for the first time, we need to configure a few things. Below are a few examples of configurations we will set as we get started with git:</p>
+<ul>
+<li><p>our name and email address,</p></li>
+<li><p>what our preferred text editor is,</p></li>
+<li><p>and that we want to use these settings globally (i.e. for every project).</p></li>
+</ul>
+<p>On a command line, git commands are written as <code>git verb options</code>, where <code>verb</code> is what we actually want to do and <code>options</code> is additional optional information which may be needed for the <code>verb</code>. So here is how John Snow sets up his new laptop:</p>
+<pre><code>$ git config --global user.name &quot;John Snow&quot;
+
+$ git config --global user.email &quot;j.snow@email.com&quot;
+
+$ git config --global color.ui &quot;auto&quot;</code></pre>
+<p>Please use your own name and email address instead of John Snow’s. If it returns no errors, then verify that these settings were saved into your configuration file (<code>.gitconfig</code>) by running:</p>
+<pre><code>$ git config --list
+
+$ git config user.name</code></pre>
+<p>This user name and email will be associated with your subsequent git activity, which means that any changes pushed to any git host server (e.g. <a href="http://github.com/">GitHub</a>, <a href="https://bitbucket.org/">BitBucket</a>, <a href="https://about.gitlab.com/">GitLab</a>) in a later lesson will include this information.</p>
+<p>For these lessons, we will be interacting with GitHub and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review <a href="https://help.github.com/articles/keeping-your-email-address-private/">GitHub’s instructions for keeping your email address private</a>.</p>
+<div id="keeping-your-email-private" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Keeping your email private</h3>
+<p>If you elect to use a private email address with GitHub, then use that same email address for the <code>user.email</code> value, e.g. <code>username@users.noreply.github.com</code> replacing <code>username</code> with your GitHub one.</p>
+</div>
+<div id="line-endings" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Line Endings</h3>
+<p>As with other keys, when you hit Return/Enter on your keyboard, your computer encodes this input as a character. Different operating systems use different character(s) to represent the end of a line. (You may also hear these referred to as newlines or line breaks.) Because git uses these characters to compare files, it may cause unexpected issues when editing a file on different machines. Though it is beyond the scope of this lesson, you can read more about this issue on this <a href="https://help.github.com/articles/dealing-with-line-endings/">GitHub page</a>.</p>
+<p>You can change the way git recognises and encodes line endings using the <code>core.autocrlf</code> command to <code>git config</code>. The following settings are recommended:</p>
+<p>On macOS and Linux:</p>
+<pre><code>$ git config --global core.autocrlf input</code></pre>
+<p>And on Windows:</p>
+<pre><code>$ git config --global core.autocrlf true</code></pre>
+</div>
+<div id="configure-your-text-editor" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Configure your text editor</h3>
+<p>The simple editor <code>nano</code> is likely to be the simplest thing to use (at least on a Mac).</p>
+<pre><code>$ git config --global core.editor &quot;nano --tempfile&quot; </code></pre>
+<p>The default is <code>vi</code>. If anyone ends up with a screen does not seem to respond to anything they type, you may have activated vi. Put your hand up and we’ll help you out.</p>
+<p>Other options: * “gedit -w -s” * “kate” * “subl -n -w’ for Sublime Text 2.</p>
+</div>
+<div id="other-editors" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> Other editors</h3>
+<p>On Windows using Notepad++ in the standard location for a 64-bit machine, you would use:</p>
+<pre><code>$ git config --global core.editor &quot;&#39;C:/Program Files (x86)/Notepad++/notepad++.exe&#39; -multiInst -notabbar -nosession -noPlugin&quot;</code></pre>
+<p>(thanks to <a href="http://stackoverflow.com/questions/1634161/how-do-i-use-notepad-or-other-with-msysgit/2486342#2486342">StackOverflow</a> for that useful tip)</p>
+<p>On Mac, with TextWrangler if you installed TextWrangler’s command line tools then you should have an “edit” command. So you can use the git command:</p>
+<pre><code>$  git config --global core.editor &quot;edit -w&quot;</code></pre>
+</div>
+</div>
+<div id="git-basics" class="section level2">
+<h2><span class="header-section-number">2.3</span> Git basics</h2>
+<p>Essentially, all version control does is store snapshots of your work in time, and keeps track of the parent-child relationships.</p>
+
+<div class="figure">
+<img src="pics/git-intro-history.png" alt="An illustration of git history" />
+<p class="caption">An illustration of git history</p>
+</div>
+<p>You can think of your current set of working files as simply the child of the last node in this chain (that is, your files are the children of the most recent set of files known to the version control system).</p>
+<p><code>git</code> provides a large number of tools for manipulating this history. We’ll only touch on a few, but the number that you need to know for day-to-day use is actually quite small.</p>
+<p>First, we’re going to need some terminology:</p>
+<ul>
+<li><strong>Repository</strong>: “Repo” for short; this is a copy of the history of your project. It is <strong>stored in a hidden directory within your project</strong>. People will talk about “cloning a repo” or “adding things to a repo”; these all manipulate the history in some way.</li>
+<li><strong>Working directory</strong>: This is your copy of a project. It’s just a directory with files and other directories in it. The repository is contained within a <code>.git</code> directory at the root directory of your project.</li>
+</ul>
+<p>One of the distinguishing and great features about git is that the repo contains the entire history of the project, i.e. if your project moves, the history travels with it. So if you clone your work to a new computer, or a collaborator gets involved (more on how to do that later), they have the full project history available. This is called <a href="https://en.wikipedia.org/wiki/Distributed_version_control">distributed version control</a>.</p>
+<div id="what-goes-in-my-repository" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> What goes in my repository?</h3>
+<p>You should establish a new repo for each project you are working on. Your project folder should contain everything related to a particular project, including inputs (data, images, notes), analysis scripts and outputs (figures, tables.) The content of your project will evolve over time and this will be tracked within the git repo.</p>
+<p>But not all of your project folder contents will be stored within the git system. As a general guide, we suggest you make a folder called <code>output</code> (see the section on <a href="index.html#treat-generated-output-as-disposable">Treat generated output as disposable</a>). This is where you should save figures and other outputs from your analysis scripts. These outputs do not need to be tracked, as they can be reproduced at any time by rerunning the script. Later we’ll show you how to <code>ignore</code> certain files in git.</p>
+</div>
+<div id="the-commit-cycle" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> The commit cycle</h3>
+<p>Your project develops as you do work. During this process you make a series of small changes such as</p>
+<ul>
+<li>writing some code</li>
+<li>importing/entering new data</li>
+<li>reorganising your files</li>
+<li>making a figure</li>
+<li>writing bits of reports or papers.</li>
+</ul>
+<p>The idea with git is that you break up your project activity into a series of small tasks, each corresponding to a ‘commit’. So the cycle goes</p>
+<blockquote>
+<p>Checkout project –&gt; do work –&gt; review changes –&gt; commit</p>
+</blockquote>
+<p>Anecdotal evidence suggests experienced programmers break up their project into lots of small pieces, and have lots of commits in their work cycle, while novices tend to have fewer, larger commits. some of the advantages of small commits are</p>
+<ul>
+<li>helps you to focus on one small piece of a much larger puzzle</li>
+<li>it’s easier to recover if something goes wrong</li>
+<li>you have a greater sense of achievement.</li>
+</ul>
+<p>If you’re trucking along for hours (or days) at a time without committing anything, chances are you’re changing too much. A good way of thinking about version control is like the ability to press “undo” when writing. You don’t know when you’ll need to go back (and most of the time you don’t need to). But when you do, you don’t want to have to have to choose between two vastly different copies of a document. With programming it’s even more important; multiple files that depend on each other are changing.</p>
+<p>You should aim to only commit once a piece of code works, so that you leave your code in working order: commits serve as checkpoints where individual files or an entire project can be safely reverted to when necessary.</p>
+</div>
+<div id="creating-a-repository" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Creating a repository</h3>
+<p>If you want to create a repository from the command line, use the command</p>
+<pre><code>git init</code></pre>
+<p>which will print something like</p>
+<pre><code>Initialized empty Git repository in /path/to/your/repository/.git/</code></pre>
+<p>The <code>.git</code> directory is a <em>hidden directory</em>. You can view it with <code>ls -a</code>, but it will be hidden with just <code>ls</code>. This store some configuration settings, but you’ll rarely need to edit them directly. It also stores all the previous versions of your working directory (but does it in all sorts of clever and efficient ways).</p>
+<p>Every git repository should contain a hidden file that indicates to the system which files or folders should be ignored in our repository—this is called <code>.gitignore</code>. Remember our <code>output/</code> folder (see the section on <a href="index.html#treat-generated-output-as-disposable">Treat generated output as disposable</a>) that should only contain files that are generated from code and therefore do not need to be tracked? This is perfect for this situation because we do not want to track any data or figures that can be reproduced again from code. RStudio creates a <code>.gitignore</code> by default, and already adds a few RStudio files that will not need to be tracked over time. If you are not using RStudio, please create this file manually and save it to your root directory. Then add <code>output/</code> to it, and save it.</p>
+</div>
+<div id="the-add-commit-cycle" class="section level3">
+<h3><span class="header-section-number">2.3.4</span> The add-commit cycle</h3>
+<p>We will use a few commands.</p>
+<p>The first is <code>git status</code>. This tells you the status of all the files in your project that <em>are not up to date</em>. At the moment, it contains:</p>
+<pre><code># On branch master
+# 
+# No commits yet
+# 
+# Untracked files:
+#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+# 
+#   .gitignore
+#   data/
+#   gapminder.Rproj
+# 
+# nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+<p>The command <code>git add</code> indicates which files we want to add:</p>
+<pre><code>git add data/
+git status
+# On branch master
+# 
+# No commits yet
+# 
+# Changes to be committed:
+#   (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)
+# 
+#   new file:   data/gapminder-FiveYearData.csv
+# 
+# Untracked files:
+#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+# 
+#   .gitignore
+#   gapminder.Rproj</code></pre>
+<p>This tells us all of the things that we are going to commit (files in <code>data/</code>) and the files that git does not know about (<code>.gitignore</code> and <code>gapminder.Rproj</code>). The command <code>git commit</code> does the actual addition. The <code>-m</code> option passes in a message for the commit.</p>
+<pre><code>git commit -m &quot;Added gapminder raw data.&quot;</code></pre>
+<p>which prints</p>
+<pre><code># [master (root-commit) 9fe17d4] Added gapminder raw data.
+#  1 file changed, 1705 insertions(+)
+#  create mode 100755 data/gapminder-FiveYearData.csv</code></pre>
+<p>which is essentially the same information that RStudio showed after committing.</p>
+<p>We can add the other files:</p>
+<pre><code>git add .gitignore gapminder.Rproj
+git commit -m &quot;Added ignore and RStudio files&quot;</code></pre>
+<p>which will print</p>
+<pre><code># [master (root-commit) eb2d68d] Added ignore and RStudio files
+#  2 files changed, 14 insertions(+)
+#  create mode 100644 .gitignore
+#  create mode 100644 gapminder.Rproj</code></pre>
+<p>To clarify what is going on, look at this figure</p>
+<div class="figure">
+<img src="pics/git-info.png" />
+
+</div>
+<p>You use <code>git add</code> to tell git what content you want it to track (new files, or changes to files that it already knows about) and then <code>git commit</code> to add that content to the repository. For now, don’t worry about the last section (<code>git push</code>)—that lets you keep the content of your local repository in sync with a repository on another computer, or on a hosting website like <a href="http://github.com">GitHub</a>. We’ll cover this on our lesson about using GitHub.</p>
+</div>
+<div id="history" class="section level3">
+<h3><span class="header-section-number">2.3.5</span> History</h3>
+<p>To see the history</p>
+<pre><code>git log</code></pre>
+<p>which will print something like</p>
+<pre><code># commit eb2d68dc34acd76fb30009ae9e5ddd65e35033eb (HEAD -&gt; master)
+# Author: John Snow &lt;j.snow@email.com&gt;
+# Date:   Tue Oct 15 13:13:15 2019 +0100
+# 
+#     Added ignore and RStudio files
+# 
+# commit 9fe17d47788f1364a7ebb620a303689588398e5f
+# Author: John Snow &lt;j.snow@email.com&gt;
+# Date:   Tue Oct 15 13:12:37 2019 +0100
+# 
+#     Added gapminder raw data.</code></pre>
+<div id="what-is-going-on-with-those-crazy-strings-of-numbers" class="section level4">
+<h4><span class="header-section-number">2.3.5.1</span> What is going on with those crazy strings of numbers?</h4>
+<p>You may have noticed the long strings of numbers, such as:</p>
+<pre><code>commit eb2d68dc34acd76fb30009ae9e5ddd65e35033eb</code></pre>
+<p>These are called “hashes”; think of them as a fingerprint of a file, or of a commit. Git uses them everywhere, so these get used where you would otherwise use “version1”, or “final”, etc.</p>
+<p>The nice thing about them is that they depend on the entire history of a project, so you know that your history is secure. For example, I deleted the full stop at the end of the first commit message (<a href="http://stackoverflow.com/a/2119656">don’t ask me how</a>) and reran <code>git log</code></p>
+<pre><code># commit a0f9f692319eb7103bd0485181b45c3bf229851f (HEAD -&gt; master)
+# Author: John Snow &lt;j.snow@email.com&gt;
+# Date:   Tue Oct 15 13:13:15 2019 +0100
+# 
+#     Added ignore and RStudio files
+# 
+# commit 9b5f828a285577d53dc40a28fa3cd7e4cc1a691d
+# Author: John Snow &lt;j.snow@email.com&gt;
+# Date:   Tue Oct 15 13:12:37 2019 +0100
+# 
+#     Added gapminder raw data.</code></pre>
+<p>You might expect that the hash for the first commit would change, but notice that it is has changed a <em>lot</em> for just one character difference. Also notice that the second commit has a new hash too; this is because one of the “things” in the second commit is a pointer back to the first commit indicating who its parent is.</p>
+<p>Confused? Don’t worry. All you need to know is that the hash identifies your <strong>entire project including its history</strong>, and that if anything changes anything in the project, the hashes will change. This is great because it allows us to use the big ugly strings of letters and numbers as a shortcut for a very precise set of information.</p>
+</div>
+<div id="what-changed" class="section level4">
+<h4><span class="header-section-number">2.3.5.2</span> What changed?</h4>
+<p>There are lots of ways of seeing what has changed. Probably too many, and the options get overwhelming. Later on, we’ll look at a website that makes that a lot easier for previous versions.</p>
+<p>Being able to see what has changed is incredibly useful, and once you start thinking with version control you’ll constantly look to see what has changed. The confidence that you can always go back is what makes version control empowering.</p>
+<p>Suppose we create a <code>R/analyses.R</code> file containing our very first function to read some data:</p>
+<pre><code>file_read  &lt;-  function (fileName, ...) {
+    read.csv(fileName, header = TRUE, stringsAsFactors = FALSE, ...)
+}</code></pre>
+<p>we’ll see that <code>git status</code> reports that there is a new untracked file:</p>
+<pre><code># On branch master
+# Untracked files:
+#   (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+# 
+#   R/
+# 
+# nothing added to commit but untracked files present (use &quot;git add&quot; to track)</code></pre>
+<p>Suppose we <code>add</code> and <code>commit</code> the file,</p>
+<pre><code>git add R/
+git commit -m &quot;added functions files to read and analyse data&quot;</code></pre>
+<p>and then decide to change it:</p>
+<pre><code>file_read  &lt;-  function (fileName, ...) {
+    read.csv(fileName, header = TRUE, stringsAsFactors = FALSE, strip.white = TRUE, ...)
+}</code></pre>
+<p>we’ll see that <code>git status</code> reports that the file has changed:</p>
+<pre><code># On branch master
+# Changes not staged for commit:
+#   (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+#   (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+# 
+#   modified:   R/analyses.R
+# 
+# no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</code></pre>
+<p>The command <code>git diff</code> shows the change between the contents of the working directory and the changes that would be committed. So with nothing to commit, this is the difference between the files in the directory and the last revision. Running <code>git diff</code> reports:</p>
+<pre><code># diff --git a/R/analyses.R b/R/analyses.R
+# index 688a1e1..6035676 100644
+# --- a/R/analyses.R
+# +++ b/R/analyses.R
+# @@ -1,4 +1,4 @@
+#  file_read  &lt;-  function (fileName, ...) {
+# -    read.csv(fileName, header = TRUE, stringsAsFactors = FALSE, ...)
+# +    read.csv(fileName, header = TRUE, stringsAsFactors = FALSE, strip.white = TRUE, ...)
+#  }</code></pre>
+<p>if we add the file to “stage” it with:</p>
+<pre><code>git add R/analyses.R</code></pre>
+<p>and rerun <code>git diff</code>, there is no output. The command <code>git status</code> now reports</p>
+<pre><code># On branch master
+# Changes to be committed:
+#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+# 
+#   modified:   R/analyses.R
+# </code></pre>
+<p>indicating that <code>R/analyses.R</code> will be added when we do <code>git commit</code>. You can review what would be committed line-by-line by running</p>
+<pre><code>git diff --cached</code></pre>
+<p>which compares the contents of the staged changes with the previous version.</p>
+</div>
+</div>
+<div id="looking-at-the-history" class="section level3">
+<h3><span class="header-section-number">2.3.6</span> Looking at the history</h3>
+<p>Lots of different ways of looking at the history. A very few useful ones (See this <a href="https://git-scm.com/docs/git-log">link</a> for full documentation):</p>
+<ul>
+<li>git log –oneline –topo-order –graph –decorate</li>
+<li>git log –since=1day</li>
+<li>git log –since=1week –until=1day</li>
+<li>git log –stat –since=1week –until=1day</li>
+<li>git log -3 # last three commits</li>
+</ul>
+</div>
+</div>
+<div id="branching" class="section level2">
+<h2><span class="header-section-number">2.4</span> Branching</h2>
+<p>A linear history is fine, but that is often not how science progresses.</p>
+<p>Suppose that you’ve got your project working, but want to get tidy it up a bit in a way that requires major surgery and you want to be able to get back to where you were.</p>
+<p>Alternatively, suppose that you want to try two different ways of implementing something.</p>
+<p>In my case, I have a package that I maintain—sometimes I need to add bug fixes to the released version without wanting to publish the broken development code.</p>
+<p>What if you wanted to go back to an old version and continue development from there?</p>
+<p>In all of these scenarios, we might want to work on a “branch” of the project.</p>
+<div id="what-do-branches-look-like" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> What do branches look like?</h3>
+<p>Suppose that we have a repository with three commits: <code>C0</code>, <code>C1</code> and <code>C2</code>:</p>
+<div class="figure">
+<img src="pics/pro-git-branch-base.png" />
+
+</div>
+<p>at the moment there is only one branch: “<code>master</code>”. Now imagine that we’re going to do some work starting at this point—we’ll create a new branch that starts from our current point (<code>C2</code>), in this case called <code>iss53</code> (the diagrams come from the excellent <a href="http://git-scm.com/book">Pro Git</a> book, and I’ve not redrawn them— for an ecologist this might be “experiment” or “reorganise_data”).</p>
+<div class="figure">
+<img src="pics/pro-git-branch-just-branched.png" />
+
+</div>
+<p>We then continue to do work on this new branch:</p>
+<div class="figure">
+<img src="pics/pro-git-branch-extend.png" />
+
+</div>
+<p>At this point, we might be happy with the new work and just want to merge the branches back together (moving the <code>master</code> pointer up to <code>C3</code>).</p>
+<p>Alternatively, you might have to do some work on <code>master</code> (perhaps your supervisor needs you to tweak a figure for a talk they are giving <em>right now</em>, but your current state on <code>iss53</code> would break it). You could then switch back to branch <code>master</code> and do some more work there too:</p>
+<div class="figure">
+<img src="pics/pro-git-branch-split.png" />
+
+</div>
+<p>(Note that the <code>iss53</code> branch has been renamed <code>experiment</code> here!) Now you your history has diverged—both commits <code>C3</code> and <code>C4</code> have <code>C2</code> as a parent, but they consist of different work. You have a choice of how you want to resolve the diverge this to get the work done on <code>C3</code> and <code>C4</code> onto the same branch. First you can <strong>merge</strong> the changes together:</p>
+<div class="figure">
+<img src="pics/pro-git-branch-merge.png" />
+
+</div>
+<p>this means that <code>C5</code> has two parents (<code>C3</code> and <code>C4</code>) and that it includes the content of both.</p>
+<p>Alternatively there is a strategy called <strong>rebase</strong> where we would replay the changes on the <code>experiment</code> branch on the <code>master</code> branch, which gives a linear history:</p>
+<div class="figure">
+<img src="pics/pro-git-branch-rebase.png" />
+
+</div>
+<p>What this does is to look at the difference between <code>C3</code> and <code>C2</code>, and then apply that difference to <code>C4</code> so that the new commit <code>C3'</code> contains the results of <code>C4</code> and <code>C3</code>. The old <code>C3</code> commit is then dropped.</p>
+<p>Note that the <strong>contents</strong> of <code>C3'</code> and <code>C5</code> will likely be the same at the end of these two operations—the difference is in the interpretation of how they came into being.</p>
+</div>
+<div id="workflows-that-use-branches" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Workflows that use branches</h3>
+<p>Branches most naturally appear in a project that is simultaneously being worked on by different people. It turns out the git will see branches in someone else’s repository essentially like branches in your own, and lots of cool ways of working with branches become possible.</p>
+<p>They also are important for single-user workflows. I use them for testing ideas that I’m not sure about:</p>
+<ul>
+<li>Create a branch</li>
+<li>Commit a bunch of work to it</li>
+<li>Decide if I like the work and if so…</li>
+<li>Merge it back into the main branch</li>
+</ul>
+<p>This idea is nicely formalised in <a href="http://nakedstartup.com/2010/04/simple-daily-git-workflow">this flow chart</a>.</p>
+<div class="figure">
+<img src="pics/git-branch-simple.png" />
+
+</div>
+<p>Much more complicated (but powerful in the right hands) workflows are possible, such as the so-called <a href="http://nvie.com/posts/a-successful-git-branching-model/">git-flow</a> workflow.</p>
+</div>
+<div id="listing-branches" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Listing branches</h3>
+<p>The command <code>git branch</code> lists the branches git knows about. By default, there is only one branch and it is called <code>master</code>.</p>
+<pre><code>git branch
+* master</code></pre>
+<p>The asterisk next to this indicates that this is the <em>current</em> branch. If you pass in the <code>-v</code> argument (for <strong>verbose</strong>), you get</p>
+<pre><code>git branch -v
+* master eb2d68d Added ignore and RStudio files</code></pre>
+<p>which adds the shortened version of the SHA hash and the last commit message.</p>
+</div>
+<div id="creating-branches" class="section level3">
+<h3><span class="header-section-number">2.4.4</span> Creating branches</h3>
+<p>There are two ways of creating branches in git. The first is to use <code>git branch</code>. The command</p>
+<pre><code>git branch new_idea</code></pre>
+<p>creates a new branch called <code>new_idea</code>, but does not change to it. Rerunning <code>git branch -v</code>:</p>
+<pre><code>* master   eb2d68d Added ignore and RStudio files
+  new_idea eb2d68d Added ignore and RStudio files</code></pre>
+<p>We now have two branches, both at the same point on the tree. The asterisk indicates that we are on the branch <code>master</code>.</p>
+<p>You can change to a branch by using <code>git checkout</code>. So to switch to the <code>new_idea</code> branch, you would do:</p>
+<pre><code>git checkout new_idea</code></pre>
+<p>which lets you know that it worked</p>
+<pre><code>Switched to branch &#39;new_idea&#39;</code></pre>
+<p>You can switch back to master by doing</p>
+<pre><code>git checkout master
+Switched to branch &#39;master&#39;</code></pre>
+<p>and can delete branches by passing <code>-d</code> to <code>git branch</code></p>
+<pre><code>git branch -d new_idea</code></pre>
+<p>which prints</p>
+<pre><code>Deleted branch new_idea (was eb2d68d).</code></pre>
+<p>The other way of creating a branch and switching to it is to pass <code>-b</code> as an argument to checkout:</p>
+<pre><code>git checkout -b new_idea
+Switched to a new branch &#39;new_idea&#39;</code></pre>
+<p>Now <code>git branch</code> shows:</p>
+<pre><code>  master
+* new_idea</code></pre>
+<p>as we both <em>created</em> and <em>switched to</em> the new branch <code>new_idea</code>.</p>
+</div>
+<div id="how-branches-grow" class="section level3">
+<h3><span class="header-section-number">2.4.5</span> How branches grow</h3>
+<p>New work is commited to the current active branch (the one with the asterisk next to it in <code>git branch</code> (at the moment this is the branch <code>new_idea</code>. So if we edit a file and do <code>git commit</code>.</p>
+<pre><code># ...edit file...
+git add R/analyses.R
+git commit -m &quot;Modified function to make NA treatment optional&quot;</code></pre>
+<p>The history is now equivalent to this picture from before:</p>
+<div class="figure">
+<img src="pics/pro-git-branch-extend.png" />
+
+</div>
+<p>You can also see a picture of this with some arguments to <code>git log</code>:</p>
+<pre><code>git log --graph --decorate --pretty=oneline --abbrev-commit
+* 37485b1 (HEAD, new_idea) Modified function to make NA treatment optional
+* eb2d68d (master) Added ignore and RStudio files
+* 9fe17d4 Added gapminder raw data.</code></pre>
+<p>(which will even be in colour if you <a href="version-control.html#basic-git-configuration">set that up</a>).</p>
+</div>
+<div id="merging-branches-back-together" class="section level3">
+<h3><span class="header-section-number">2.4.6</span> Merging branches back together</h3>
+<p>Suppose that you are happy with the changes that you made and want to merge them into your <code>master</code> branch.</p>
+<p>To do the merge, you first check the <code>master</code> branch back out:</p>
+<pre><code>git checkout master</code></pre>
+<p>which will output</p>
+<pre><code>Switched to branch &#39;master&#39;</code></pre>
+<p>then</p>
+<pre><code>git merge new_idea</code></pre>
+<p>which, for instance, would output something like</p>
+<pre><code>Updating a0f9f69..37485b1
+Fast-forward
+ R/analyses.R | 3 +-
+ 1 file changed, 3 insertions(+), 2 deletions(-)</code></pre>
+<p>telling you that <code>master</code> was “fast-forwarded” from <code>a0f9f69</code> to <code>37485b1</code>, changing one file (<code>R/analyses.R</code>) by inserting three lines and deleting two.</p>
+<p>The tree now has two branches that “point” at the last commit: <code>master</code> and <code>new_idea</code>. We can delete the <code>new_idea</code> branch with</p>
+<pre><code>git branch -d new_idea</code></pre>
+<p>(the <code>-d</code> argument stands for <strong>delete</strong>).</p>
+</div>
+<div id="merging-when-branches-have-diverged" class="section level3">
+<h3><span class="header-section-number">2.4.7</span> Merging when branches have diverged</h3>
+<p>If you have a history like this one:</p>
+<div class="figure">
+<img src="pics/pro-git-branch-split.png" />
+
+</div>
+<p>as noted above you have two choices—you can <strong>merge</strong> or you can <strong>rebase</strong>. Suppose for now that we have checked out <code>experiment</code>. You would switch to to branch <code>master</code> by running</p>
+<pre><code>git checkout master</code></pre>
+<p>and then merge the experiment in with</p>
+<pre><code>git merge experiment</code></pre>
+<p>which gives a history like this:</p>
+<div class="figure">
+<img src="pics/pro-git-branch-merge.png" />
+
+</div>
+<p>The alternative would be to run</p>
+<pre><code>git checkout master
+git rebase experiment</code></pre>
+<p>which results in a history like this:</p>
+<div class="figure">
+<img src="pics/pro-git-branch-rebase.png" />
+
+</div>
+<p>In both cases, you could delete the experiment branch with</p>
+<pre><code>git branch -d experiment</code></pre>
+<p>What you chose is often mostly a matter of taste (and there are a diversity of opinions on this). For a single-user workflow it often does not make much difference.</p>
+<p>Sometimes, the change on a branch all falls in a logical chunk, and it might make good sense to merge that in with <code>merge</code> to reflect this in your history. Other times, the different branches just reflect working on different computers, or changes that make sense when reordered linearly. In that case, <code>rebase</code> is often the best bet.</p>
+</div>
+<div id="branches-and-old-versions" class="section level3">
+<h3><span class="header-section-number">2.4.8</span> Branches and old versions</h3>
+<p>Suppose that you want to look an old version (say, <code>C2</code> in the graphs above). You can simply do to</p>
+<pre><code>git checkout C2</code></pre>
+<p>which will produce the rather scary message:</p>
+<pre><code>You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b new_branch_name
+
+HEAD is now at 5d522e6... Added RStudio files</code></pre>
+<div class="figure">
+<img src="pics/headless-mode.jpg" />
+
+</div>
+<p>What this means: - you can’t commit anything - any changes you make will be lost when you go back to a “proper” branch.</p>
+<p>If you did want to start a branch here, you can do</p>
+<pre><code>git checkout -b revisit_old_analysis</code></pre>
+<p>which will start a new branch at the point <code>C2</code>. You can then continue adding to that branch with <code>git commit</code>, or just easily switch back to it.</p>
+<p>You could also have done both things in one step, from <code>master</code>:</p>
+<pre><code>git checkout -b revisit_old_analysis C2</code></pre>
+<p>which would start a new branch called <code>revisit_old_analysis</code> at the point in history <code>C2</code>.</p>
+</div>
+<div id="concluding-remarks" class="section level3">
+<h3><span class="header-section-number">2.4.9</span> Concluding remarks</h3>
+<p>Branching is git’s “killer feature”—the thing that it does better than most other version control systems. Branches are addictive, and once you get used to using them, you’ll find all sorts of use for them. Branches are very fast to create, to switch between, and to destroy. If they help you structure your work, you should use them!</p>
+<p>There is an incredible <a href="http://pcottle.github.io/learnGitBranching/?NODEMO">Git branching demo</a> that is useful to work through learning about git branches. It also has a <a href="http://pcottle.github.io/learnGitBranching/">tutorial mode</a> with lots of lessons.</p>
+</div>
+</div>
+<div id="further-reading-material" class="section level2">
+<h2><span class="header-section-number">2.5</span> Further reading material</h2>
+<p>There is no way that we can cover everything that you need to get started with git. I recommend that you work through the first two chapters of the <a href="http://git-scm.org/book">git book</a> (free and online!). It won’t take long and you can skim through sections. This is 95% of what you need to know to use git by yourself. If you read the third chapter you know 99% of what you need to use git in a collaborative team.</p>
+<p>There are some good online tutorials online; these two might be of particular interest <a href="http://kbroman.github.io/github_tutorial/">this one</a> focusses on using git with github and <a href="http://karthik.github.io/git_intro/">this one</a> gives a nice bit of extra motivation.</p>
+<p><a href="http://nicercode.github.io/git/">Here</a> is a beginner-focussed tutorial we use in another course that focusses on using git from within R.</p>
+<p><a href="http://github.com/">GitHub</a> is amazing and makes it easy to do a lot with git. In particular <a href="https://help.github.com/en/articles/comparing-commits-across-time">it makes it easy to</a></p>
+<ul>
+<li><p>see <strong>diffs</strong>, comparing different versions of your project easily, and without having to remember the command syntax.</p></li>
+<li><p>examine <strong>logs</strong> so you can see what happened by file, or over the whole project.</p></li>
+<li><p>use <strong>blame</strong> to see who changed what line in a file and when.</p></li>
+<li><p>to help collaborate with other people on code.</p></li>
+<li><p>use <strong>pull requests</strong>, which mean you can easily contribute to other people’s projects and they can easily control what is added to their project.</p></li>
+<li><p>set up <a href="https://travis-ci.org/">continuous integration</a>, so that you know as soon as something goes wrong.</p></li>
+</ul>
+<p>If you don’t like git, you might like <a href="mercurial.selenic.com">Mercurial</a>. If that doesn’t do it for you, there are <a href="http://en.wikipedia.org/wiki/List_of_revision_control_software">many, many others</a> but bear in mind that it’s important to use similar systems to people you might work with.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lecture-slides.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
