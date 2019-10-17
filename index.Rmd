@@ -1076,6 +1076,14 @@ There are some good online tutorials online; these two might be of particular in
 
 If you don't like git, you might like [Mercurial](mercurial.selenic.com).  If that doesn't do it for you, there are [many, many others](http://en.wikipedia.org/wiki/List_of_revision_control_software) but bear in mind that it's important to use similar systems to people you might work with.
 
+# Lecture slides
+
+* [Day 1: Open Science](slides/OpenSciSlides_091019_1.pdf)
+
+* [Day 1: Pre-registration](slides/OpenSciSlides_091019_2.pdf)
+
+* [Day 2: Reproducibility](slides/OpenSciSlides_161019.pdf)
+
 # Resources for pracs
 
 * [GitHub for beginners](https://guides.github.com/activities/hello-world/).
