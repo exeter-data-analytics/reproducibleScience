@@ -1078,7 +1078,7 @@ If you don't like git, you might like [Mercurial](mercurial.selenic.com).  If th
 
 # Lecture slides
 
-* [Day 1: Open Science](slides/OpenSciSlides_091019_1.pdf)
+* [Day 1: Open Science](slides/OpenSciSlides_091019.pdf)
 
 * [Day 2: Reproducibility](slides/OpenSciSlides_161019.pdf)
 
