@@ -8,3 +8,7 @@ docs/
 _bookdown*
 
 upload.sh
+
+# from day 1
+*.pptx
+
