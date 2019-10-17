@@ -1080,6 +1080,12 @@ If you don't like git, you might like [Mercurial](mercurial.selenic.com).  If th
 
 * [GitHub for beginners](https://guides.github.com/activities/hello-world/).
 
+* Videos on how to use git and GitHub with RStudio (Parts [1](https://www.youtube.com/watch?v=KjLycV1IWqc) and [2](https://www.youtube.com/watch?v=qcjpHFwCugE)).
+
+* A comprehensive [written tutorial](https://happygitwithr.com/) on how to use git and GitHub with RStudio.
+
+* Our lecture [GitHub repository](https://github.com/dbarneche/gapminder) for participants to [clone](https://git-scm.com/docs/git-clone)---[tips](https://happygitwithr.com/clone.html) on how to achieve this with RStudio---and play with.
+
 * Rmarkdown with [Knitr](https://yihui.name/knitr/), including [options](https://yihui.name/knitr/options/).
 
 * Reproducible code with [drake](https://ropenscilabs.github.io/drake-manual/).
